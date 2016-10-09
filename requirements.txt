@@ -1,3 +1,0 @@
-dwml==0.2
-mammoth==1.0.3
-beautifulsoup4==4.5.1
