@@ -6,7 +6,7 @@
     <title>测试渲染</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="reveal/css/reveal.css">
-    <link rel="stylesheet" href="reveal/css/theme/black.css">
+    <link rel="stylesheet" href="reveal/css/theme/white.css">
     <style>
     table,
     table td,
@@ -29,10 +29,35 @@
         color: red;
         cursor: pointer;
     }
+    
+    #header {
+        position: absolute;
+        top: 0;
+        padding-left: 2em;
+        width: 100%;
+        height: 60px;
+        pointer-events: none;
+        color: #ffffff;
+        font-family: "微软雅黑";
+        font-size: 2em;
+        line-height: 2em;
+        background-color: #17488a;
+    }
+    
+    .reveal {
+        font-size: 1em
+    }
+    
+    .reveal section img {
+        border: 0px solid #FFFFFF;
+    }
     </style>
 </head>
 
 <body>
+    <div id="header">
+        2017江苏一轮数学文理通用基础版
+    </div>
     <div class="reveal">
         <div class="slides">
         </div>
@@ -138,12 +163,16 @@
     var html = "";
     for (var i = 0, len1 = data.length; i < len1; i++) {
         var section = "<section>"
+        var flag = false;
         for (var j = 0, len2 = data[i].length; j < len2; j++) {
             if (data[i][j] !== "") {
                 var rel = data[i][j].replace(/【.+?】/, function(p1) {
                     return "<span class='answer'>" + p1 + "</span>"
                 })
                 if (/【.+?】/.test(data[i][j])) {
+                    flag = true;
+                }
+                if (flag === true) {
                     section += "<p class='fragment'>" + rel + "</p>";
                 } else {
                     section += "<p>" + rel + "</p>";
