@@ -53,7 +53,7 @@ def write_txt(pagearr):
 			temp_str=temp_str+line+"\r\n\r\n"
 		temp_str=temp_str+"---分页符号"+str(page_index+1)+"---\r\n\r\n"
 		page_index+=1
-	with open("E:\\latex\\data\\txt\\txt.txt","wb") as f:
+	with open("E:\\docx2html\\data\\txt\\txt.txt","wb") as f:
 		f.write(temp_str.replace("<p>","").replace("</p>",""))
 
 
@@ -102,7 +102,7 @@ def emu2px(emu):
 """
 def process_start():
 	#读取
-	htmlstr=read_html("E:\\latex\\data\\html\\1.html")
+	htmlstr=read_html("E:\\docx2html\\data\\html\\1.html")
 	#替换图片节点
 	htmlstr=process_img(htmlstr)
 	#分割成每一页

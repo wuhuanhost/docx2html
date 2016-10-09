@@ -5,7 +5,7 @@ import re,json
 获取每一页的数据
 """
 def get_page():
-	with open("E:\\latex\\data\\txt\\txt.txt","rb") as f:
+	with open("E:\\docx2html\\data\\txt\\txt.txt","rb") as f:
 		txt=f.read()
 		page_arr=re.split('[-]{3,}.+?[-]{3,}',txt)
 		page_data=[]
@@ -22,7 +22,7 @@ def get_page():
 
 
 def to_json(page_data):
-	with open("E:\\latex\\data\\json\\json.json","wb") as f:
+	with open("E:\\docx2html\\data\\json\\json.json","wb") as f:
 		f.write(page_data)
 
 
