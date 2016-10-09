@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>测试渲染</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="reveal/css/reveal.css">
-    <link rel="stylesheet" href="reveal/css/theme/white.css">
+    <link rel="stylesheet" href="./reveal/css/reveal.css">
+    <link rel="stylesheet" href="./reveal/css/theme/white.css">
     <style>
     table,
     table td,
@@ -186,8 +186,8 @@
     </script>
     <script type='text/x-mathjax-config'>MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['@@','@@']]}});</script>
     <script type='text/javascript' async src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML'></script>
-    <script src="reveal/lib/js/head.min.js"></script>
-    <script src="reveal/js/reveal.js"></script>
+    <script src="./reveal/lib/js/head.min.js"></script>
+    <script src="./reveal/js/reveal.js"></script>
     <script>
     // More info https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
@@ -195,14 +195,14 @@
 
         // More info https://github.com/hakimel/reveal.js#dependencies
         dependencies: [{
-            src: 'plugin/markdown/marked.js'
+            src: './reveal/plugin/markdown/marked.js'
         }, {
-            src: 'plugin/markdown/markdown.js'
+            src: './reveal/plugin/markdown/markdown.js'
         }, {
-            src: 'plugin/notes/notes.js',
+            src: './reveal/plugin/notes/notes.js',
             async: true
         }, {
-            src: 'plugin/highlight/highlight.js',
+            src: './reveal/plugin/highlight/highlight.js',
             async: true,
             callback: function() {
                 hljs.initHighlightingOnLoad();
