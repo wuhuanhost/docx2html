@@ -2,6 +2,7 @@
 from docx import to_latex
 import mammoth
 import sys,os, base64,re,uuid
+from utils.remove_file_folder import delete_file_folder
 #导入数据字典
 from data_dist import dd
 
@@ -51,6 +52,11 @@ to_latex(filename=inputFile);
 生成html
 """
 def gen_html():
+	#清空img目录
+	delete_file_folder(dd['img_dir'])
+	#创建img目录
+	os.mkdir(dd['img_dir']+"\\")
+
 	document=u"<!DOCTYPE html><html lang='zh_CN'><head><meta charset='UTF-8'><title>Document</title><style>table,table td,table th{border:1px solid;border-collapse: collapse;}</style></head><body>";
 	print type(document)
 	style_map = "u => u"

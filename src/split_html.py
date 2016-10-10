@@ -2,7 +2,7 @@
 """
 按照6个中划线的字符串分割html
 """
-import re
+import re,os
 
 
 """
@@ -42,7 +42,10 @@ def process_html(htmlarr):
 """
 将每一页每一行的数据写入txt文本中
 """
-def write_txt(pagearr):
+txtpath=os.path.abspath(os.path.join(os.path.dirname(__file__),"..","data","txt","1.txt"))
+htmlpath=os.path.abspath(os.path.join(os.path.dirname(__file__),"..","data","html","1.html"))
+
+def write_txt(txt_path,pagearr):
 	page_index=0
 	temp_str=''
 	#每一页
@@ -53,7 +56,7 @@ def write_txt(pagearr):
 			temp_str=temp_str+line+"\r\n\r\n"
 		temp_str=temp_str+"---分页符号"+str(page_index+1)+"---\r\n\r\n"
 		page_index+=1
-	with open("E:\\docx2html\\data\\txt\\txt.txt","wb") as f:
+	with open(txt_path,"wb") as f:
 		f.write(temp_str.replace("<p>","").replace("</p>",""))
 
 
@@ -100,9 +103,9 @@ def emu2px(emu):
 """
 程序入口方法
 """
-def process_start():
+def process_start(html_path,txt_path):
 	#读取
-	htmlstr=read_html("E:\\docx2html\\data\\html\\1.html")
+	htmlstr=read_html(html_path)
 	#替换图片节点
 	htmlstr=process_img(htmlstr)
 	#分割成每一页
@@ -110,8 +113,8 @@ def process_start():
 	#处理成每一页每一行
 	arr=process_html(htmlarr)
 	#写入txt中
-	write_txt(arr)
+	write_txt(txt_path,arr)
 	#print arr
 
 
-process_start()
+process_start(htmlpath,txtpath)
