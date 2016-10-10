@@ -1,2 +1,5 @@
 .DS_Store
-data/
+data/docx
+data/txt
+data/html
+data/json
