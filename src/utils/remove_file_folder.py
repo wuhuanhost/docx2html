@@ -1,5 +1,5 @@
 #-*- coding:utf-8 -*-
-import os
+import os,re
 """
 删除文件和目录的方法
 如果是文件直接删除
@@ -23,5 +23,5 @@ def delete_file_folder(src):
 #测试
 #delete_file_folder("E:\\docx2html\\src\\utils\\123")
 
-print os.path.dirname(os.path.dirname(os.getcwd()))
-print os.path.abspath(os.path.join(os.path.dirname(__file__),"..","..","data","txt.txt"))  
+#print os.path.dirname(os.path.dirname(os.getcwd()))
+#print os.path.abspath(os.path.join(os.path.dirname(__file__),"..","..","data","txt.txt"))
