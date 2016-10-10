@@ -1,3 +1,6 @@
 logs
 *.log
 data/img
+data/html
+data/txt
+data/json
