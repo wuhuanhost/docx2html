@@ -1,5 +1,6 @@
 logs
 *.log
+app/
 data/img
 data/html
 data/txt
