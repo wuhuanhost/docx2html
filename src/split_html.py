@@ -42,8 +42,8 @@ def process_html(htmlarr):
 """
 将每一页每一行的数据写入txt文本中
 """
-txtpath=os.path.abspath(os.path.join(os.path.dirname(__file__),"..","data","txt","1.txt"))
-htmlpath=os.path.abspath(os.path.join(os.path.dirname(__file__),"..","data","html","1.html"))
+txtpath=os.path.abspath(os.path.join(os.path.dirname(__file__),"..","data","txt","2.txt"))
+htmlpath=os.path.abspath(os.path.join(os.path.dirname(__file__),"..","data","html","02.html"))
 
 def write_txt(txt_path,pagearr):
 	page_index=0

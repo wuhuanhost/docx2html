@@ -269,12 +269,11 @@ def _create_reader(numbering, content_types, relationships, styles, docx_file, f
             return _success(documents.line_break())
     
     def inline(element):
-		#获取图片的宽度
 		cx=element.find_child_or_null("wp:extent").attributes.get("cx")
-		#获取图片的高度
 		cy=element.find_child_or_null("wp:extent").attributes.get("cy")
 		alt_text = element.find_child_or_null("wp:docPr").attributes.get("descr")
-		#将图片的宽度和高度追加到img标签的alt属性上
+		if alt_text==None:
+			alt_text=""
 		alt_text=alt_text+","+cx+","+cy
 		blips = element.find_children("a:graphic") \
             .find_children("a:graphicData") \
@@ -288,13 +287,6 @@ def _create_reader(numbering, content_types, relationships, styles, docx_file, f
         return _ReadResult.concat(lists.map(lambda blip: _read_blip(blip, alt_text), blips))
     
     def _read_blip(element, alt_text):
-		#print element
-		#altText = element.first("wp:docPr").attributes.descr
-        #altTextx = element.first("wp:extent").attributes.cx
-		#altTexty = element.first("wp:extent").attributes.cy
-		#alt_text=altText,",",altTextx,",",altTexty
-		#print element.find_child_or_null("wp:docPr").attributes.get("cy")	
-        
 		r=_read_image(lambda: _find_blip_image(element), alt_text)
 		return r
     
