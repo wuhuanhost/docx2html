@@ -1,6 +1,8 @@
 logs
 *.log
 app/
+build/
+dist/
 data/img
 data/html
 data/txt

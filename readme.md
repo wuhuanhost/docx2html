@@ -19,3 +19,15 @@ $ cd src/
 
 $ python parse_html.py  test.docx  test.html
 ```
+
+**打包成.exe安装pyinstaller**
+
+```
+$ pyinstaller -F -w -i manage.ico ./src/parse_html.py
+```
+
+**或者安装打包工具目录下的cfreeze然后执行**
+
+```
+$ cfreeze ./src/parse_html.py
+```
