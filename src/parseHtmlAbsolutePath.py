@@ -5,7 +5,6 @@ from utils.remove_file_folder import delete_file_folder
 from docx import to_latex
 
 input_argv = sys.argv[1];
-print u"输入文件名为:"+input_argv
 inputFile=input_argv
 
 #base64转图片
