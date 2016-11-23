@@ -27,7 +27,8 @@ def convert_image(image):
 	#print img_file_name
 	base64ToFile(img_data,img_file_name)
 	return {
-        "src": os.path.join(os.path.abspath(inputFile),os.pardir,os.pardir,"images/",img_file_name)
+        "relative-src": "../images/"+img_file_name,
+		"src":os.path.abspath(os.path.join(os.path.abspath(inputFile),os.pardir,os.pardir,"images/",img_file_name))
 }
 
 
@@ -48,10 +49,36 @@ def gen_html():
 		messages = result.messages
 	#document+=html #不能使用+=的方式这样会出现乱码
 	document=document+html
-	document=document+u"<script type='text/x-mathjax-config'>MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['@@','@@']]}});</script>"
-	document=document+u"<script type='text/javascript' async src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML'></script></body></html>"
+	document=document+u"</body></html>"
 	document=document.encode('utf-8')
-	print html.encode("utf-8")
+	document=re.sub(r'<img.*?>',newstr,document)
+	print document
+
+
+
+	
+
+
+"""
+替换img标签时候的处理函数
+"""
+def newstr(match):
+	img=match.group(0)
+	img_element_arr=img.split(" ");#  [[<img] [alt='111,222'] [src='123.jpg'>]]
+	alt_arr=img_element_arr[1].split(",") #
+	img_width=alt_arr[1]
+	img_height=alt_arr[2].replace("\"","")
+	#print img_width+">"+str(emu2px(img_width))+" | "+img_height+">"+str(emu2px(img_height))
+	return "<img "+img_element_arr[1]+" "+img_element_arr[2]+" "+img_element_arr[3]+" width='"+str(emu2px(img_width))+"px'"+" height='"+str(emu2px(img_height))+"px' "+img_element_arr[2]+"</>";
+
+
+"""
+docx中的图片使用的emu绝对单位，转为像素的方法为
+"""
+def emu2px(emu):
+	emu=float(emu)
+	return round((emu / 360000 * 96 / 2.54),2)
+
 
 
 #调用
