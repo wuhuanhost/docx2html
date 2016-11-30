@@ -47,7 +47,7 @@ to_latex(filename=inputFile);
 """
 def gen_html():
 	document=u"<!DOCTYPE html><html lang='zh_CN'><head><meta charset='UTF-8'><title>Document</title><style>table,table td,table th{border:1px solid;border-collapse: collapse;}</style></head><body>";
-	print type(document)
+	#print type(document)
 	style_map = "u => u"
 	with open(inputFile, "rb") as docx_file:
 		result = mammoth.convert_to_html(docx_file,convert_image=mammoth.images.img_element(convert_image),style_map=style_map)
