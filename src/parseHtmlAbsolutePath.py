@@ -3,14 +3,18 @@ import mammoth
 import sys,os, base64,re,uuid
 from utils.remove_file_folder import delete_file_folder
 from docx import to_latex
+reload(sys)
+sys.setdefaultencoding('gbk')
 
-input_argv = sys.argv[1];
+input_argv = sys.argv[1]
 inputFile=input_argv
+imgIndex=0
 
 #base64转图片
 def base64ToFile(baseData,file_name):
 	imgData = base64.b64decode(baseData)
-	imgFile = open(os.path.join(os.path.abspath(inputFile),os.pardir,os.pardir,"images/",file_name),'wb')
+	imgFile = open(os.path.join(os.path.abspath(inputFile),os.pardir,os.pardir,"images/",os.path.basename(file_name)),'wb')
+	#print imgFile
 	imgFile.write(imgData)
 	imgFile.close()
 
@@ -23,12 +27,14 @@ def convert_image(image):
 	#print image.__dict__
 	img_type=image.content_type.split("/")[1]
 	img_data=encoded_src
-	img_file_name="".join((str(uuid.uuid1()),".",img_type))
+	global imgIndex # 声明imgIndex为全局变量
+	imgIndex=imgIndex+1
+	img_file_name=inputFile+"-"+str(imgIndex)+"."+img_type
 	#print img_file_name
 	base64ToFile(img_data,img_file_name)
 	return {
-        "relative-src": "../images/"+img_file_name,
-		"src":os.path.abspath(os.path.join(os.path.abspath(inputFile),os.pardir,os.pardir,"images/",img_file_name))
+        #"relative-src": "../images/"+img_file_name,
+		"src":os.path.abspath(os.path.join(os.path.abspath(inputFile),os.pardir,os.pardir,"images/",os.path.basename(img_file_name)))
 }
 
 
@@ -69,7 +75,7 @@ def newstr(match):
 	img_width=alt_arr[1]
 	img_height=alt_arr[2].replace("\"","")
 	#print img_width+">"+str(emu2px(img_width))+" | "+img_height+">"+str(emu2px(img_height))
-	return "<img "+img_element_arr[1]+" "+img_element_arr[2]+" "+img_element_arr[3]+" width='"+str(emu2px(img_width))+"px'"+" height='"+str(emu2px(img_height))+"px' "+img_element_arr[2]+"</>";
+	return "<img "+img_element_arr[1]+" "+img_element_arr[2]+" width='"+str(emu2px(img_width))+"px'"+" height='"+str(emu2px(img_height))+"px'/>";
 
 
 """

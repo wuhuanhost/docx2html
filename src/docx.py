@@ -2,7 +2,7 @@
 
 import re
 import zipfile
-
+import sys
 from dwml import omml
 from dwml.utils import PY2
 from xml.sax.saxutils import escape
