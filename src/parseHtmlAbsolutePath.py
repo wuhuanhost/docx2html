@@ -58,11 +58,7 @@ def gen_html():
 	document=document+u"</body></html>"
 	document=document.encode('utf-8')
 	document=re.sub(r'<img.*?>',newstr,document)
-	print document
-
-
-
-	
+	print document+"@@@end@@@"  #@@@end@@@为结束标志的字符串，node中执行命令行程序的时候是异步获取数据的，当数据
 
 
 """
