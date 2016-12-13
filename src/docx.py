@@ -54,6 +54,7 @@ def _latex_fn(mathobj,f):
 	xml_str = DOCXML_ROOT.format(mathobj.group(0))
 	for omath in omml.load_string(xml_str):
 		_replaceLtGt=f.format(omath.latex);
+		print f.format(escape(_replaceLtGt))
 		print _replaceLtGt
 		return TEXT.replace('{0}',_replaceLtGt.replace(r"<","&lt;"))
 	return None
@@ -64,6 +65,7 @@ def _latex_block_fn(mathobj,f):
 	xml_str = DOCXML_ROOT.format(srarch.group(0))
 	for omath in omml.load_string(xml_str):
 		_replaceLtGt=f.format(omath.latex);
+		print f.format(escape(_replaceLtGt))
 		print _replaceLtGt
 		return TEXT_BLOCK.replace('{0}',_replaceLtGt.replace(r"<","&lt;"))
 	return None

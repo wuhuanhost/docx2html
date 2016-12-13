@@ -9,21 +9,29 @@ pip install -r requirements.txt
 
 **setp 2**
 
->>> copy `body_xml.py` from `./bank/body_xml.py` to `python_home/Lib/site-packages/mammoth/docx/body_xml.py`
+* copy `body_xml.py` from `./bank/body_xml.py` to `python_home/Lib/site-packages/mammoth/docx/body_xml.py`
+
+* copy `omml.py` from `./bank/omml.py` to `python_home/Lib/site-packages/dwml/omml.py`
 
 
 **setp 3**
 
+>>> copy [filename].docx  to  `./data/docx`
+
+**setp 4**
+
 ```
-$ cd src/
+$ cd ./src
 
 $ python parse_html.py  test.docx  test.html
+
 ```
 
 **打包成.exe安装pyinstaller**
 
 ```
 $ pyinstaller -F -w -i manage.ico ./src/parse_html.py
+
 ```
 
 **或者安装打包工具目录下的cfreeze然后执行**
